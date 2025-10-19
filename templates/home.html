@@ -1,4 +1,74 @@
-<h1>
-    Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>California House Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f5f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input {
+            margin: 5px 0;
+            padding: 8px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>California House Price Prediction</h1>
+    <form action="/predict" method="post">
+        <input type="number" step="any" name="MedInc" placeholder="Median Income" required>
+        <input type="number" step="any" name="HouseAge" placeholder="House Age" required>
+        <input type="number" step="any" name="AveRooms" placeholder="Average Rooms" required>
+        <input type="number" step="any" name="AveBedrms" placeholder="Average Bedrooms" required>
+        <input type="number" step="any" name="Population" placeholder="Population" required>
+        <input type="number" step="any" name="AveOccup" placeholder="Average Occupancy" required>
+        <input type="number" step="any" name="Latitude" placeholder="Latitude" required>
+        <input type="number" step="any" name="Longitude" placeholder="Longitude" required>
+        <button type="submit">Predict Price</button>
+    </form>
 
-</h1>
+   
+    {% if prediction is not none %}
+    <div class="result">
+        <strong>Predicted Price:</strong> {{ prediction }} (in $100,000s)
+    </div>
+{% endif %}
+
+</body>
+</html>
